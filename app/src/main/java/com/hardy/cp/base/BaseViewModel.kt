@@ -11,17 +11,17 @@ abstract class BaseViewModel : ViewModel(), ViewModelCoroutineLifecycle {
     // viewModelScope 의 경우 androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0 이상 버전 필요.
     init {
         // leaking warning
-        willAttachCoroutine()
+        onWillAttachCoroutine()
 
         viewModelScope.launch {
             // 코루틴은 뷰모델이 클리어 됨과 동시에 취소될 것이다.
-            didAttachCoroutine()
+            onDidAttachCoroutine()
         }
     }
 
     override fun onCleared() {
         // 뷰모델 스코프 내부의 코루틴이 클리어와 동시에 종료.
-        detachCoroutine()
+        onDetachCoroutine()
         super.onCleared()
     }
 }

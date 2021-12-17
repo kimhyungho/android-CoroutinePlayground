@@ -47,9 +47,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+    // 2.2.0 이상부터 뷰모델 스코프 사용가능.
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+
+    // 2.2.0 이상부터 라이프사이클 스코프 사용 가능.
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+
+    // 라이브 데이터.
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
 
+    // viewModels()
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    // 코루틴.
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
 }

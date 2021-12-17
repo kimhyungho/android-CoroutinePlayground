@@ -2,6 +2,7 @@ package com.hardy.cp.scope
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.hardy.cp.R
 import com.hardy.cp.base.BaseActivity
 import com.hardy.cp.databinding.ActivityScopeBinding
@@ -10,9 +11,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class ScopeActivity : BaseActivity<ActivityScopeBinding>(
+class ScopeActivity : BaseActivity<ActivityScopeBinding, ScopeViewModelType>(
     R.layout.activity_scope
 ) {
+
+    private val _viewModel: ScopeViewModel by viewModels()
+    override val viewModel: ScopeViewModelType get() = _viewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,7 +29,8 @@ class ScopeActivity : BaseActivity<ActivityScopeBinding>(
         // 코루틴 스코프는 글로벌 스코프와 코루틴스코프가 존재한다.
 
         // 글로벌 스코프 => 앱의 생명주기와 함께 동작하기 때문에 실행 도중에 별도 생명 주기 관리가 필요없다.
-        // 시작 ~ 종료 까지 긴 기간 실행되는 코루틴의 경우 적합하다.
+        // 앱의 시작 ~ 종료 까지 긴 기간 실행되는 코루틴의 경우 적합하다.
+        // Application 에서 사용하거나 / 액티비티 종료시 코루틴을 잘 종료해서 사용해야 할 것 같다.
         GlobalScope.launch {
             // DO IT
         }
@@ -38,7 +44,7 @@ class ScopeActivity : BaseActivity<ActivityScopeBinding>(
             }
         }
 
-        // 뷰모델 스코프 => ScopeViewModel 에서 확인.
+        // 뷰모델 스코프 => BaseViewModel & ScopeViewModel 에서 확인.
 
 
     }

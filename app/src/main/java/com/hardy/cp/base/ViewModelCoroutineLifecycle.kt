@@ -1,15 +1,15 @@
 package com.hardy.cp.base
 
 interface ViewModelCoroutineLifecycle {
-    fun willAttachCoroutine() {
+    fun onWillAttachCoroutine() {
 
     }
 
-    fun didAttachCoroutine() {
+    fun onDidAttachCoroutine() {
 
     }
 
-    fun detachCoroutine() {
+    fun onDetachCoroutine() {
 
     }
 }
