@@ -13,6 +13,7 @@ abstract class BaseViewModel : ViewModel(), ViewModelCoroutineLifecycle {
         // leaking warning
         onWillAttachCoroutine()
 
+
         viewModelScope.launch {
             // 코루틴은 뷰모델이 클리어 됨과 동시에 취소될 것이다.
             onDidAttachCoroutine()
